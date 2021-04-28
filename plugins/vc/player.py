@@ -47,8 +47,8 @@ from utils.filters import main_filter, self_or_contact_filter
 from utils.vc import mp
 
 DELETE_DELAY = 8
-DURATION_AUTOPLAY_MIN = 10
-DURATION_PLAY_HOUR = 3
+DURATION_AUTOPLAY_MIN = 600
+DURATION_PLAY_HOUR = 10
 
 USERBOT_HELP = f"""{emoji.LABEL}  **Common Commands**:
 __available to group members of current voice chat__
@@ -113,7 +113,7 @@ async def play_track(client, m: Message):
     playlist = mp.playlist
     # check audio
     if m.audio:
-        if m.audio.duration > (DURATION_AUTOPLAY_MIN * 60):
+        if m.audio.duration > (DURATION_AUTOPLAY_MIN * 600):
             reply = await m.reply_text(
                 f"{emoji.ROBOT} audio which duration longer than "
                 f"{str(DURATION_AUTOPLAY_MIN)} min won't be automatically "
